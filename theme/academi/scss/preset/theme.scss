@@ -1,8 +1,44 @@
+@font-face {
+    font-family: 'Kirby';
+    src: url([[font:theme|kirvy-bold-webfont.eot]]);
+    src: url([[font:theme|kirvy-bold-webfont.eot]]) format('embedded-opentype'),
+      url([[font:theme|kirvy-bold-webfont.woff]]) format('woff'),
+      url([[font:theme|kirvy-bold-webfont.woff2]]) format('woff2'),
+      url([[font:theme|kirvy-bold-webfont.ttf]]) format('truetype'),
+      url([[font:theme|kirvy-bold-webfont.svg]]) format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Viga';
+    src: url([[font:theme|viga-regular-webfont.eot]]);
+    src: url([[font:theme|viga-regular-webfont.eot]]) format('embedded-opentype'),
+      url([[font:theme|viga-regular-webfont.woff]]) format('woff'),
+      url([[font:theme|viga-regular-webfont.woff2]]) format('woff2'),
+      url([[font:theme|viga-regular-webfont.ttf]]) format('truetype'),
+      url([[font:theme|viga-regular-webfont.svg]]) format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'OpenSans';
+    src: url([[font:theme|opensans-regular-webfont.eot]]);
+    src: url([[font:theme|opensans-regular-webfont.eot]]) format('embedded-opentype'),
+      url([[font:theme|opensans-regular-webfont.woff]]) format('woff'),
+      url([[font:theme|opensans-regular-webfont.woff2]]) format('woff2'),
+      url([[font:theme|opensans-regular-webfont.ttf]]) format('truetype'),
+      url([[font:theme|opensans-regular-webfont.svg]]) format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 //colors
-$color_olivine_approx: #88b77b;
+$color_olivine_approx: #79AA39;
 $white: #fff;
 $color_storm_dust_approx: #656565;
-$blaze_orange: #ff6600;
+$blaze_orange: #AE703B;
 $color_ebb_approx: #e8e3e3;
 $color_woodsmoke_approx: #111;
 $color_alto_approx: #dedede;
@@ -39,9 +75,15 @@ $color_black_haze_approx: #f7f7f7;
 $concrete: #f2f2f2;
 $color_cedar_approx: #3e1a1a;
 $color_trendy_pink_approx: #8e558e;
+$gray_agrorural_dark: #595959;
+$gray_agrorural_light: #F2F2F1;
+$gray_agrorural_steel: #BAC8D0;
+$blue_agrorural_steel: #00607E;
+$orange_agrorural: #AE703B;
 
 //fonts
-$font_0: Century Gothic;
+$font_0: Viga;
+$font_5: OpenSans;
 $font_1: Arial;
 $font_2: Helvetica;
 $font_3: sans-serif;
@@ -63,14 +105,19 @@ $url_9: url([[pix:theme|theme_t/expanded]]);
 $url_10: url([[pix:theme|theme_t/collapsed]]);
 $url_11: url([[pix:theme|theme_t/collapsed_rtl]]);
 $url_12: url([[pix:theme|ic-search]]);
+$url_13: url([[pix:theme|aula_virtual__logo]]);
 
 //@extend-elements
 //original selectors
 //h1, h2, h3, h4, h5, h6
 %extend_1 {
     font-weight: normal;
-    font-family: $font_0, $font_1, $font_2, $font_3;
+    font-family: $font_0, $font_3;
     color: $blaze_orange;
+}
+
+h2, .h2, .path-calendar .maincalendar .calendar-controls .current {
+    font-size: 1.5rem;
 }
 
 //original selectors
@@ -86,7 +133,7 @@ $url_12: url([[pix:theme|ic-search]]);
 
 
 body {
-    font-family: $font_0, $font_1, $font_2, $font_3;
+    font-family: $font_5, $font_1, $font_2, $font_3;
     color: $color_storm_dust_approx;
     padding-top: 0;
     background: $white;
@@ -193,8 +240,12 @@ i.icon {
     }
 }
 
+.userpicture {
+    border-radius: 0;
+}
+
 #header {
-    border-bottom: 1px solid $color_ebb_approx;
+    border-bottom: 0px solid transparent;
     background: $color_olivine_approx;
     .popover-region i.icon:before  {
         color: $white;
@@ -472,6 +523,41 @@ i.icon {
         }
     }
 }
+
+.nav-language{
+    @extend .usermenu;
+    float: left;
+    a{
+        font-size: inherit !important;
+        text-transform: none !important;
+        letter-spacing: inherit !important;
+    }
+}
+
+.agrorural{
+    display: block;
+    width: 235px;
+    height: 97px;
+    background: $url_13 no-repeat right center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(75%);
+    span{
+        position: relative;
+        display: block;
+        text-indent: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    }
+    &:hover{
+        -webkit-filter: grayscale(0);
+        filter: grayscale(0);
+    }
+}
+
 .dir-rtl {
     .header-main {
         .infoarea span {
@@ -790,12 +876,17 @@ i.icon {
         top: 0;
     }
 }
+
+#nav-drawer {
+    background-color: $orange_agrorural;
+}
+
 #footer {
     a {
         color: $blaze_orange;
     }
     .footer-main {
-        background: $color_heavy_metal_approx;
+        background: $gray_agrorural_light;
         padding: 30px 0 54px;
         h2 {
             font-weight: bold;
@@ -819,6 +910,9 @@ i.icon {
                     }
                 }
             }
+            p{
+                color: $gray_agrorural_dark;
+            }
         }
         .foot-links {
             padding: 24px 0 0;
@@ -828,10 +922,10 @@ i.icon {
                 margin: 0;
                 li a {
                     font-size: 16px;
-                    color: $white;
+                    color: $gray_agrorural_dark;
                     line-height: 32px;
                     &:hover {
-                        color: $color_olivine_approx;
+                        color: $orange_agrorural;
                         text-decoration: none;
                     }
                 }
@@ -842,8 +936,8 @@ i.icon {
             h2 {
                 margin-bottom: 18px;
             }
-            p a {
-                color: $color_olivine_approx;
+            p{
+                color: $gray_agrorural_dark;
             }
         }
     }
@@ -851,7 +945,7 @@ i.icon {
         padding: 5px 0 0;
         h6 {
             font-size: 14px;
-            color: $white;
+            color: $gray_agrorural_dark;
         }
         ul {
             list-style: none;
@@ -864,8 +958,8 @@ i.icon {
                     margin: 0 0 0 12px;
                 }
                 a {
-                    font-size: 42px;
-                    color: $white;
+                    font-size: 32px;
+                    color: $gray_agrorural_dark;
                     &:hover {
                         text-decoration: none;
                     }
@@ -905,11 +999,13 @@ i.icon {
         }
     }
     .footer-bootom {
-        background: $color_rangoon_green_approx;
+        background: $gray_agrorural_light;
         padding: 21px 0;
         text-align: center;
+        border-top: 1px solid #d5d5d5;
         p {
-            color: $color_olivine_approx;
+            font-size: 10px;
+            color: $gray_agrorural_dark;
             margin-bottom: 0;
         }
     }
@@ -3690,5 +3786,23 @@ form#movecourses table tbody > tr:nth-child(2n + 1) {
         color: $white;
         background: $color_olivine_approx;
         border-color: $color_olivine_approx;
+    }
+}
+
+@media (min-width: 768px){
+    .carousel-overlay-content .content-wrap {
+        padding: inherit;
+        padding-top: 15%;
+        @extend .container;
+        h2{
+            font-size: 3rem;
+            text-transform: uppercase;
+        }
+        p{
+            font-size: 1.25rem;
+        }
+        p, h2{
+            background: rgba(0,96,126,.75);
+        }
     }
 }

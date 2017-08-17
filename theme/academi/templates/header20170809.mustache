@@ -48,12 +48,14 @@
         {{{ output.search_box }}}
         </span>
 
-        <nav class="nav-language hidden-md-down">
-            <!-- custom_menu -->
-            {{{ output.custom_menu }}}
-            <!-- page_heading_menu -->
-            {{{ output.page_heading_menu }}}
-        </nav>
+        <nav class="nav navbar-nav hidden-md-down">
+            {{# phoneno}}
+                <span><i class="fa fa-phone"></i>{{s_callus}} : {{ phoneno }}</span>
+            {{/ phoneno}}
+            {{# emailid}}
+                <span><i class="fa fa-envelope-o"></i>{{s_email}} : <a href="mailto:{{emailid}}">{{ emailid }}</a></span>
+            {{/ emailid}}
+         </nav>
 
     </div>
 </header>
@@ -79,15 +81,16 @@
 
 	<button class="{{navbarclass}}" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
 
-    	<div class="collapse navbar-toggleable-md" id="navbarResponsive">
+	<div class="collapse navbar-toggleable-md" id="navbarResponsive">
 
-            <div class="infoarea ">
-                <a href="http://www.agrorural.gob.pe" target="_blank" class="agrorural">
-                    <span>AGRO RURAL</span>
-                </a>
-            </div>
-
+        <div class="infoarea ">
+            <!-- custom_menu -->
+            {{{ output.custom_menu }}}
+            <!-- page_heading_menu -->
+            {{{ output.page_heading_menu }}}
         </div>
+
+    </div>
     </nav>
 
     </div>
